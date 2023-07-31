@@ -1,0 +1,8 @@
+# Enable RewriteEngine
+RewriteEngine On
+RewriteBase /
+# Make HTTP Basic Authentication work on php5-fcgi installs
+<IfModule mod_fcgid.c>
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+</IfModule>
